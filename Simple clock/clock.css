@@ -1,62 +1,129 @@
-.clock {
-border-radius: 50%;
-background: #fff url(https://cssanimation.rocks/images/posts/clocks/ios_clock.svg) no-repeat center;
-background-size: 88%;
-height: 20em;
-padding-bottom: 31%;
-position: relative;
-width: 20em;
+
+html {
+  background: #55268F;
+}
+svg {
+  width: 400px;
+  fill: none;
+  stroke: black;
+  stroke-width: 1;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+--start-seconds: 57;
+  --start-minutes: 45;
+  --start-hours: 11;
 }
 
-.clock.simple:after {
-boreder-radius: 50%;
-background: #000;
-content: "";
-height: 5%;
-width: 5%;
- left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-position: absolute;
-  z-index: 10;
+.marks {
+  transform: translate(20px, 20px);
+  stroke-width: 0.2;
+}
+.marks > line:nth-child(1) {
+  /* There are 12 marks, so we rotate by 30deg (12 * 30 = 360) */
+  transform: rotate(30deg); 
+}
+.marks > line:nth-child(2) {
+  transform: rotate(calc(2 * 30deg));
+}
+.marks > line:nth-child(3) {
+  transform: rotate(calc(3 * 30deg));
+  stroke-width: 0.5;
+}
+.marks > line:nth-child(4) {
+  transform: rotate(calc(4 * 30deg));
+}
+.marks > line:nth-child(5) {
+  transform: rotate(calc(5 * 30deg));
+}
+.marks > line:nth-child(6) {
+  transform: rotate(calc(6 * 30deg));
+  stroke-width: 0.5;
+}
+.marks > line:nth-child(7) {
+  transform: rotate(calc(7 * 30deg));
+}
+.marks > line:nth-child(8) {
+  transform: rotate(calc(8 * 30deg));
+}
+.marks > line:nth-child(9) {
+  transform: rotate(calc(9 * 30deg));
+  stroke-width: 0.5;
+}
+.marks > line:nth-child(10) {
+  transform: rotate(calc(10 * 30deg));
+}
+.marks > line:nth-child(11) {
+  transform: rotate(calc(11 * 30deg));
+}
+.marks > line:nth-child(12) {
+  transform: rotate(calc(12 * 30deg));
+  stroke-width: 0.5;
 }
 
-.hours-container, .minutes-container, .seconds-container {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  }
-
-.hours {
-background: #000;
-height: 20%;
-  left: 48.75%;
-  top: 30%;
-  position: absolute;
-  width: 2.5%;
-  transform-origin: 50% 100%;
-    
+.seconds,
+.minute,
+.hour
+{
+  transform: translate(20px, 20px) rotate(0deg);
 }
-
-.minutes {
-background: #000;
-height: 40%;
-  left: 49%;
-  top: 10%;
-  position: absolute;
-  width: 2%;
-  transform-origin: 50% 100%;
-  }
-
 .seconds {
-  background: #000;
-height: 45%;
-  left: 49.5%;
-  top: 14%;
-  position: absolute;
-  width: 1%;
-  transform-origin: 50% 80%;
-  z-index: 8;
+  stroke-width: 0.3;
+  stroke: #d00505;
+  transform: translate(20px, 20px) rotate(calc(var(--start-seconds) * 6deg));
+  animation: rotateSecondsHand 60s steps(60) infinite;
+}
+
+.minute {
+  stroke-width: 0.6;
+  transform: translate(20px, 20px) rotate(calc(var(--start-minutes) * 6deg));
+  animation: rotateMinuteHand 3600s steps(60) infinite;
+  animation-delay: calc(var(--start-seconds) * -1 * 1s);
+}
+
+.hour {
+  stroke-width: 1;
+  transform: translate(20px, 20px) rotate(calc(var(--start-hours) * 30deg));
+  animation: rotateHourHand calc(12 * 60 * 60s) linear infinite;
+  animation-delay: calc(calc(var(--start-minutes) * -60 * 1s) + calc(var(--start-seconds) * -1 * 1s));
+}
+
+.pin {
+  stroke: #d00505;
+  stroke-width: 0.2;
+  fill: #d00505;
+}
+
+.tiaText {
+  font-size: 1px;
+  font-family: sans-serif;
+  transform: translate(14px, 19px) rotate(90deg);
+  fill: #dfdfdf;
+  stroke: none;
+}
+
+@keyframes rotateSecondsHand {
+  from {
+    transform: translate(20px, 20px) rotate(calc(var(--start-seconds) * 6deg));
   }
+  to {
+    transform: translate(20px, 20px) rotate(calc(var(--start-seconds) * 6deg + 360deg));
+  }
+}
+
+@keyframes rotateMinuteHand {
+  from {
+    transform: translate(20px, 20px) rotate(calc(var(--start-minutes) * 6deg));
+  }
+  to {
+    transform: translate(20px, 20px) rotate(calc(var(--start-minutes) * 6deg + 360deg));
+  }
+}
+
+@keyframes rotateHourHand {
+  from {
+    transform: translate(20px, 20px) rotate(calc(var(--start-hours) * 30deg));
+  }
+  to {
+    transform: translate(20px, 20px) rotate(calc(var(--start-hours) * 30deg + 360deg));
+  }
+}
