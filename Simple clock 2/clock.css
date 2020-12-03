@@ -1,0 +1,52 @@
+
+html {
+  background: #f72585;
+}
+svg {
+  width: 100px;
+  fill: none;
+  stroke: white;
+  stroke-width: 1;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  --start-minutes: 45;
+  --start-hours: 11;
+}
+
+.minute,
+.hour
+{
+  transform: translate(20px, 20px) rotate(0deg);
+}
+
+.minute {
+  stroke-width: 1;
+  transform: translate(20px, 20px) rotate(calc(var(--start-minutes) * 6deg));
+  animation: rotateMinuteHand 3600s steps(60) infinite;
+  animation-delay: calc(var(--start-seconds) * -1 * 1s);
+}
+
+.hour {
+  stroke-width: 1;
+  transform: translate(20px, 20px) rotate(calc(var(--start-hours) * 30deg));
+  animation: rotateHourHand calc(12 * 60 * 60s) linear infinite;
+  animation-delay: calc(calc(var(--start-minutes) * -60 * 1s) + calc(var(--start-seconds) * -1 * 1s));
+}
+
+@keyframes rotateMinuteHand {
+  from {
+    transform: translate(20px, 20px) rotate(calc(var(--start-minutes) * 6deg));
+  }
+  to {
+    transform: translate(20px, 20px) rotate(calc(var(--start-minutes) * 6deg + 360deg));
+  }
+}
+
+@keyframes rotateHourHand {
+  from {
+    transform: translate(20px, 20px) rotate(calc(var(--start-hours) * 30deg));
+  }
+  to {
+    transform: translate(20px, 20px) rotate(calc(var(--start-hours) * 30deg + 360deg));
+  }
+}
