@@ -1,11 +1,11 @@
 
 html {
-  background: #234567;
+  background: #f72585;
 }
 svg {
   width: 100px;
   fill: none;
-  stroke: black;
+  stroke: white;
   stroke-width: 1;
   stroke-linecap: round;
   transform: rotate(-90deg);
@@ -20,7 +20,7 @@ svg {
 }
 
 .minute {
-  stroke-width: 0.6;
+  stroke-width: 1;
   transform: translate(20px, 20px) rotate(calc(var(--start-minutes) * 6deg));
   animation: rotateMinuteHand 3600s steps(60) infinite;
   animation-delay: calc(var(--start-seconds) * -1 * 1s);
