@@ -4,7 +4,9 @@ svg {
   --start-hours: 11;
     }
 
-.hours {
+.hours,
+.minutes,
+.seconds {
     
     /* 
      * Make the initial position to be the center of the circle you want this
@@ -13,7 +15,9 @@ svg {
     position: absolute;
     left: 315px;
     top: 143px;
+}
 
+.hours {
     /*
      * Sets up the animation duration, timing-function (or easing)
      * and iteration-count. Ensure you use the appropriate vendor-specific 
@@ -26,6 +30,23 @@ svg {
             animation: myOrbit 3600s linear infinite; /* Chrome, Firefox 16+, 
                                                       IE 10+, Safari 5 */
     
+    
+
+}
+
+.minutes {-webkit-animation: myOrbit 360s linear infinite; /* Chrome, Safari 5 */
+       -moz-animation: myOrbit 360s linear infinite; /* Firefox 5-15 */
+         -o-animation: myOrbit 360s linear infinite; /* Opera 12+ */
+            animation: myOrbit 360s linear infinite; /* Chrome, Firefox 16+, 
+                                                      IE 10+, Safari 5 */
+    
+    
+}
+.seconds {-webkit-animation: myOrbit 60s linear infinite; /* Chrome, Safari 5 */
+       -moz-animation: myOrbit 60s linear infinite; /* Firefox 5-15 */
+         -o-animation: myOrbit 60s linear infinite; /* Opera 12+ */
+            animation: myOrbit 60s linear infinite; /* Chrome, Firefox 16+, 
+                                                      IE 10+, Safari 5 */
     
     
 }
