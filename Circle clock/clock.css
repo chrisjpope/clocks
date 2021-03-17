@@ -1,3 +1,7 @@
+html {
+    background: #dedede;
+}
+
 svg {
     --start-seconds: 57;
   --start-minutes: 45;
@@ -14,7 +18,7 @@ svg {
      */
     position: absolute;
     left: 315px;
-    top: 143px;
+   top: 143px;
 }
 
 .hours {
